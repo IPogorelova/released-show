@@ -34,11 +34,10 @@ const Notebook = ({ isOpened, setIsOpened }) => {
   return (
     <div
       className={`notebook ${!isOpened ? 'notebook_closed' : ''}`}
-      ref={setNodeRef}
       style={style}
-      {...listeners}
-      {...attributes}
+      ref={setNodeRef}
     >
+      <span className="notebook__handler" {...listeners} {...attributes} />
       <button
         type="button"
         className="notebook__close-button"
