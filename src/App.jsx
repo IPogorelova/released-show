@@ -4,7 +4,7 @@ import { DndContext, useSensor, useSensors, PointerSensor, KeyboardSensor } from
 import { linksData } from './components/links-data.js';
 import { Yarlik, YarlikButton } from './components/yarlik/index.jsx';
 import Notebook from './components/notebook/index.jsx';
-import StartButton from './components/start-button/index.jsx';
+import { StartButton, StartButtonImages } from './components/start-button/index.jsx';
 import Clock from './components/clock/index.jsx';
 
 import notebookIcon from './assets/images/icons/notebook.png';
@@ -35,9 +35,14 @@ const App = () => {
           />
         </li>
       </ul>
+      <div className="desktop-container__menu">
+        <StartButton />
+        <Clock />
+      </div>
       <Notebook isOpened={isNotebookOpened} setIsOpened={setIsNotebookOpened} />
-      <StartButton />
-      <Clock />
+      <StartButton className="display-sm-none" />
+      <Clock className="display-sm-none" />
+      <StartButtonImages />
     </DndContext>
   )
 };

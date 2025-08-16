@@ -9,8 +9,15 @@
   width: 100vw;
   height: 100vh;
   box-sizing: border-box;
-  padding: 32px 12px;
+  padding: 32px 12px 46px;
   overflow: hidden;
+
+  @media (max-width: 1000px) {
+    display: block;
+    height: 758px;
+    padding-bottom: 70px;
+    overflow: visible;
+  }
 }
 
 .desktop-container {
@@ -23,4 +30,35 @@
   margin-top: 0;
   padding-left: 0;
   list-style: none;
+
+  @media (max-width: 1000px) {
+    width: 100%;
+    max-width: 500px;
+    grid-template-columns: repeat(auto-fit, var(--yarlik-size));
+    grid-auto-rows: var(--yarlik-size);
+    grid-gap: 32px 4px;
+    height: fit-content;
+  }
+}
+
+.desktop-container__menu {
+  display: none;
+  position: fixed;
+  top: auto;
+  left: 0px;
+  right: -12px;
+  bottom: 0;
+  width: 100%;
+  height: 46px;
+  background-image: url('./assets/images/start-left-sm.png'),
+                    url('./assets/images/start-right.png'),
+                    linear-gradient(to bottom, #DCDFE4 0px, #DCDFE4 1px, #c4c4c4 1px, #c4c4c4 100%);
+  background-repeat: no-repeat;
+  background-size: auto 46px, auto 46px, 100% 46px;
+  background-position: bottom left, bottom right, bottom;
+  z-index: 10;
+
+  @media (max-width: 1000px) {
+    display: block;
+  }
 }

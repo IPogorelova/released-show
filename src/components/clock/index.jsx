@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 import './index.css';
 
-const Clock = () => {
+const Clock = ({ className }) => {
   const [time, setTime] = useState(new Date());
 
   useEffect(() => {
@@ -26,7 +26,7 @@ const Clock = () => {
   };
 
   return (
-    <p className="clock">
+    <p className={`clock ${className}`}>
       {formatTime(time)}
     </p>
   )

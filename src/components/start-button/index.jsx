@@ -27,15 +27,18 @@ const handleStartButtonClick = () => {
   });
 };
 
-const StartButton = () => (
+export const StartButton = ({ className }) => (
+  <button
+    onClick={handleStartButtonClick}
+    type="button"
+    className={`start-button ${className}`}
+  >
+    <span className="visually-hidden">Start</span>
+  </button>
+);
+
+export const StartButtonImages = () => (
   <>
-    <button
-      onClick={handleStartButtonClick}
-      type="button"
-      className="start-button"
-    >
-      <span className="visually-hidden">Start</span>
-    </button>
     <img src={errorImg} className="error-img" alt="Error: Fail" />
     <img src={errorImg} className="error-img" alt="Error: Fail" />
     <img src={errorImg} className="error-img" alt="Error: Fail" />
@@ -53,5 +56,3 @@ const StartButton = () => (
     <img src={errorImg} className="error-img" alt="Error: Fail" />
   </>
 );
-
-export default StartButton;

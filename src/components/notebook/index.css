@@ -15,6 +15,17 @@
   background-repeat: no-repeat;
   background-position: top left;
   box-sizing: border-box;
+  z-index: 1;
+
+  @media (max-width: 1000px) {
+    position: static;
+    width: 100%;
+    margin: 32px auto 0;
+  }
+
+  @media (max-width: 500px) {
+    padding-top: 48px;
+  }
 }
 
 .notebook__handler {
