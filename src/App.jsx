@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { DndContext } from '@dnd-kit/core';
+import { DndContext, useSensor, useSensors, PointerSensor, KeyboardSensor } from '@dnd-kit/core';
 
 import { linksData } from './components/links-data.js';
 import { Yarlik, YarlikButton } from './components/yarlik/index.jsx';
@@ -14,8 +14,13 @@ import './App.css';
 const App = () => {
   const [isNotebookOpened, setIsNotebookOpened] = useState(true);
 
+  const sensors = useSensors(
+    useSensor(PointerSensor, { activationConstraint: { distance: 6 } }),
+    useSensor(KeyboardSensor)
+  );
+
   return (
-    <DndContext>
+    <DndContext sensors={sensors}>
       <h1 className="visually-hidden">The page about "Released!" podcast</h1>
       <ul className="desktop-container">
         {linksData.map(link => <li key={link.text}><Yarlik {...link} /></li>)}
@@ -23,7 +28,10 @@ const App = () => {
           <YarlikButton
             text="Notebook"
             icon={notebookIcon}
-            onClick={() => setIsNotebookOpened(true)}
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsNotebookOpened(true);
+            }}
           />
         </li>
       </ul>

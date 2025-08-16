@@ -15,7 +15,6 @@ const Notebook = ({ isOpened, setIsOpened }) => {
     id: 'draggableNotebook',
   });
 
-  // Копим постоянную позицию (смещение), чтобы не «отскакивало» после перетаскивания
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
   useDndMonitor({
@@ -26,7 +25,6 @@ const Notebook = ({ isOpened, setIsOpened }) => {
     },
   });
 
-  // Во время drag добавляем текущий transform к накопленной позиции
   const currentX = position.x + (transform?.x ?? 0);
   const currentY = position.y + (transform?.y ?? 0);
   const style = {
@@ -41,7 +39,15 @@ const Notebook = ({ isOpened, setIsOpened }) => {
       {...listeners}
       {...attributes}
     >
-      <button className="notebook__close-button" onClick={() => setIsOpened(false)}>
+      <button
+        type="button"
+        className="notebook__close-button"
+        onClick={(e) => {
+          e.stopPropagation();
+          setIsOpened(false);
+        }}
+        onPointerDown={(e) => e.stopPropagation()}
+      >
         <span className="visually-hidden">Close</span>
       </button>
       <label htmlFor="released" className="visually-hidden">

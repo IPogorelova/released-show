@@ -45,5 +45,5 @@
 }
 
 .notebook_closed {
-  display: none;
+  display: none!important;
 }
