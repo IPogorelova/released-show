@@ -1,7 +1,7 @@
 .error-img {
   position: absolute;
   display: none;
-  width: 300px;
+  width: 150px;
   z-index: 2;
 }
 

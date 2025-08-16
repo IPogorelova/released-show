@@ -33,6 +33,7 @@
   outline: none;
   resize: none;
   background-color: transparent;
+  color: black;
 }
 
 .notebook__text {
