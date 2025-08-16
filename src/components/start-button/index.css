@@ -1,0 +1,22 @@
+.error-img {
+  position: absolute;
+  display: none;
+  width: 300px;
+  z-index: 2;
+}
+
+.error-img-shown {
+  display: block;
+}
+
+.start-button {
+  position: absolute;
+  bottom: 6px;
+  left: 4px;
+  width: 96px;
+  height: 36px;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}

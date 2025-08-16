@@ -41,3 +41,12 @@
   color: #ffffff;
   text-align: center;
 }
+
+.yarlik_button {
+  width: 100%;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: 'WindowsFont', system-ui, Avenir, Helvetica, Arial, sans-serif;
+}

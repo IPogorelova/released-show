@@ -1,6 +1,6 @@
 import './index.css';
 
-const Yarlik = ({ icon, link, text }) => {
+export const Yarlik = ({ icon, link, text }) => {
 
   return (
     <a href={link} target="_blank" className="yarlik">
@@ -10,4 +10,12 @@ const Yarlik = ({ icon, link, text }) => {
   )
 };
 
-export default Yarlik;
+export const YarlikButton = ({ icon, text, onClick }) => {
+
+  return (
+    <button className="yarlik yarlik_button" onClick={onClick}>
+        <span className="yarlik__image"><img src={icon} alt={`${text} icon`} /></span>
+        <span className="yarlik__text">{text}</span>
+    </button>
+  )
+};

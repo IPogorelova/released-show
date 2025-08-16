@@ -1,0 +1,49 @@
+.notebook {
+  display: block;
+  position: absolute;
+  right: 48px;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  width: 70%;
+  max-width: 600px;
+  max-height: max-content;
+  aspect-ratio: 1082 / 724;
+  padding: 58px 38px 32px 16px;
+  background-image: url('../../assets/images/notebook.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: top left;
+  box-sizing: border-box;
+}
+
+.notebook__textarea {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  resize: none;
+  background-color: transparent;
+}
+
+.notebook__text {
+  margin-top: 12px;
+  font-size: 16px;
+  line-height: 24px;
+  color: black;
+}
+
+.notebook__close-button {
+  position: absolute;
+  top: 5px;
+  right: 7px;
+  width: 24px;
+  height: 24px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.notebook_closed {
+  display: none;
+}
