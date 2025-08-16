@@ -1,3 +1,6 @@
+import { useState } from 'react';
+import { useDraggable, useDndMonitor } from '@dnd-kit/core';
+
 import './index.css';
 
 const defaultValue = "/~~~ Released! podcast ~~~/\n" +
@@ -8,13 +11,50 @@ const defaultValue = "/~~~ Released! podcast ~~~/\n" +
   "And hey, you might just get inspired to create something amazing yourself!"
 
 const Notebook = ({ isOpened, setIsOpened }) => {
+  const {attributes, listeners, setNodeRef, transform} = useDraggable({
+    id: 'draggableNotebook',
+  });
+
+  // Копим постоянную позицию (смещение), чтобы не «отскакивало» после перетаскивания
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+
+  useDndMonitor({
+    onDragEnd: (event) => {
+      if (event.active.id !== 'draggableNotebook') return;
+      const { delta } = event;
+      setPosition((prev) => ({ x: prev.x + delta.x, y: prev.y + delta.y }));
+    },
+  });
+
+  // Во время drag добавляем текущий transform к накопленной позиции
+  const currentX = position.x + (transform?.x ?? 0);
+  const currentY = position.y + (transform?.y ?? 0);
+  const style = {
+    transform: `translate3d(${currentX}px, ${currentY}px, 0)`,
+  };
 
   return (
-    <div className={`notebook ${!isOpened ? 'notebook_closed' : ''}`}>
-      <button className="notebook__close-button" onClick={() => setIsOpened(false)}><span className="visually-hidden">Close</span></button>
-      <label htmlFor="released" className="visually-hidden">"Released!" podcast description</label>
-      <textarea name="release" id="released" cols="30" rows="10" className="notebook__textarea"
-      defaultValue={defaultValue}/>
+    <div
+      className={`notebook ${!isOpened ? 'notebook_closed' : ''}`}
+      ref={setNodeRef}
+      style={style}
+      {...listeners}
+      {...attributes}
+    >
+      <button className="notebook__close-button" onClick={() => setIsOpened(false)}>
+        <span className="visually-hidden">Close</span>
+      </button>
+      <label htmlFor="released" className="visually-hidden">
+        "Released!" podcast description
+      </label>
+      <textarea
+        name="release"
+        id="released"
+        cols="30"
+        rows="10"
+        className="notebook__textarea"
+        defaultValue={defaultValue}
+      />
     </div>
   )
 };

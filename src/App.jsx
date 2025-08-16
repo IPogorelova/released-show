@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { DndContext } from '@dnd-kit/core';
 
 import { linksData } from './components/links-data.js';
 import { Yarlik, YarlikButton } from './components/yarlik/index.jsx';
@@ -14,7 +15,7 @@ const App = () => {
   const [isNotebookOpened, setIsNotebookOpened] = useState(true);
 
   return (
-    <>
+    <DndContext>
       <h1 className="visually-hidden">The page about "Released!" podcast</h1>
       <ul className="desktop-container">
         {linksData.map(link => <li key={link.text}><Yarlik {...link} /></li>)}
@@ -29,7 +30,7 @@ const App = () => {
       <Notebook isOpened={isNotebookOpened} setIsOpened={setIsNotebookOpened} />
       <StartButton />
       <Clock />
-    </>
+    </DndContext>
   )
 };
 
