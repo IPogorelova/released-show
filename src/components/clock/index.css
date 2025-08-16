@@ -1,0 +1,12 @@
+.clock {
+  position: absolute;
+  bottom: 9px;
+  right: 12px;
+  margin: 0;
+  padding: 3px 16px;
+  font-size: 22px;
+  text-align: center;
+  line-height: 1;
+  color: black;
+  background-color: #c4c4c4;
+}
