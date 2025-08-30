@@ -26,7 +26,7 @@ const App = () => {
         {linksData.map(link => <li key={link.text}><Yarlik {...link} /></li>)}
         <li>
           <YarlikButton
-            text="Notebook"
+            text="Notepad"
             icon={notebookIcon}
             onClick={(e) => {
               e.stopPropagation();
